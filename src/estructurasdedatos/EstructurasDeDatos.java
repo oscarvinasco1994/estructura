@@ -5,6 +5,9 @@
  */
 package estructurasdedatos;
 
+import estructurasdedatos.cap1.complejidad.Ciclos;
+import estructurasdedatos.cap1.complejidad.Condicionales;
+
 /**
  *
  * @author tusk
@@ -16,6 +19,13 @@ public class EstructurasDeDatos {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Ciclos ejerciciosCiclos = new Ciclos();
+     
+        ejerciciosCiclos.ejerciciosCiclos();
+        
+        Condicionales ejercicioscondicionales = new Condicionales();
+       
+        ejercicioscondicionales.ejercicioscondicionales();
     }
     
 }
