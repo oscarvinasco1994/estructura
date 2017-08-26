@@ -1,1 +1,39 @@
 
+ORDENAMIENTO DE BURBUJA...
+
+El metodo de ordenamiento de burbuja es  el ordenamiento o reordenamiento de una lista a de n valores, en este caso de n términos 
+numerados del 0 al n-1; consta de dos bucles anidados, uno con el índice i, que da un tamaño menor al recorrido de la burbuja en sentido
+inverso de 2 a n, y un segundo bucle con el índice j, con un recorrido desde 0 hasta n-i, para cada iteración del primer bucle, que 
+indica el lugar de la burbuja.
+
+ORDENAMIENTO DE ORDENAMIENTO...
+
+es una manera muy natural de ordenar para un ser humano, y puede usarse fácilmente para ordenar un mazo de cartas numeradas en forma 
+arbitraria. Requiere O(n²) operaciones para ordenar una lista de n elementos.
+
+Inicialmente se tiene un solo elemento, que obviamente es un conjunto ordenado. Después, cuando hay k elementos ordenados de menor
+a mayor, se toma el elemento k+1 y se compara con todos los elementos ya ordenados, deteniéndose cuando se encuentra un elemento menor 
+(todos los elementos mayores han sido desplazados una posición a la derecha) o cuando ya no se encuentran elementos (todos los elementos
+fueron desplazados y este es el más pequeño). En este punto se inserta el elemento k+1 debiendo desplazarse los demás elementos.
+
+ORDENAMIENTO CON ARBOL BINARIO...
+
+es un algoritmo de ordenamiento, el cual ordena sus elementos haciendo uso de un árbol binario de búsqueda. Se basa en ir construyendo
+poco a poco el árbol binario introduciendo cada uno de los elementos, los cuales quedarán ya ordenados. Después, se obtiene la lista 
+de los elementos ordenados recorriendo el árbol en inorden.
+
+Insertar elementos en un árbol binario de búsqueda tiene una complejidad O(log n). Entonces, agregar n elementos a un árbol 
+cualquiera da como resultado una complejidad O(n log n). Además, recorrer los elementos del árbol en inorden tiene complejidad O(n).
+
+ORDENAMIENTO POR CASILLEROS...
+
+ es un algoritmo de ordenamiento que distribuye todos los elementos a ordenar entre un número finito de casilleros. Cada casillero 
+ sólo puede contener los elementos que cumplan unas determinadas condiciones.
+ 
+ El algoritmo contiene los siguientes pasos:
+
+-Crear una colección de casilleros vacíos
+-Colocar cada elemento a ordenar en un único casillero
+-Ordenar individualmente cada casillero
+-devolver los elementos de cada casillero concatenados por orden
+
