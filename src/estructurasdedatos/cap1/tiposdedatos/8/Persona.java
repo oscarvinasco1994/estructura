@@ -1,4 +1,4 @@
-packet estructurasdedate.cap1.tiposdedatos;
+package estructurasdedate.cap1.tiposdedatos;
 
 public class Persona {
 			private String cedula;
