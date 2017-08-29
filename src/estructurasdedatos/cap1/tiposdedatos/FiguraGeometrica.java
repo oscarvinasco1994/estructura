@@ -1,3 +1,5 @@
+package estructurasdedate.cap1.tiposdedatos;
+
 public class FiguraGeomatrica {
 	private String codigo;
   	private String tipo;
