@@ -1,4 +1,3 @@
-
 package estructurasdedatos.cap2.arreglos;
 
 
@@ -32,16 +31,38 @@ public class Vector {
         }
         return vector;
     }
-    public void buscarDato(String dato) {  
-        int i = 0;
-
-        while (i < tam) {                   
-            if (vector[i].equals(dato)) {   
-                System.out.println("el dato esta en la posicion: " + i);  
+ public void ordenarVec(int vector[]){
+for(int i = 0; i < vector.length - 1; i++)
+        {
+            for(int j = 0; j < vector.length - 1; j++)
+            {
+                if (vector[j] < vector[j + 1])
+                {
+                    int tmp = vector[j+1];
+                    vector[j+1] = vector[j];
+                    vector[j] = tmp;
+                }
             }
-            i++;
         }
-    } 
+    
+}
+
+public void buscarBinario(int pos, int vector[]){
+Integer posini=0;
+Integer posfin=vector.length-1;
+Integer poscentral = null;
+while(posini<=posfin){
+if (vector[poscentral]==pos){
+System.out.println("el dato esta en:"+posini+"y"+posfin);
+}
+else {if(pos<=vector[poscentral]){
+posfin=poscentral;
+}
+ }
+  }
+   } 
+
+    
     public void actualizar (int pos, String dato){   
         if(pos < tam){                             
             System.out.println("la posicion no existe"); 
@@ -49,9 +70,7 @@ public class Vector {
             vector[pos]= dato;                       
         }
     } 
-    public void borrarposicion (int pos){            
+    public void borrarposicion (Integer pos){            
         vector[pos]= null;                           
     }
 }
-
-
