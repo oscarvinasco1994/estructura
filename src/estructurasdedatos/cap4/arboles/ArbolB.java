@@ -10,29 +10,27 @@ package estructurasdedatos.cap4.arboles;
  * @author tusk
  */
 public class ArbolB{
-    
-    
 
-    private Nodoarbol raiz;
+    private NodoArbol raiz;
 
         public boolean vacio() {
             return raiz == null;
         }
 
         
-    public void Insertar(Nodoarbol raiz) {
+    public void Insertar(int nodo) {
             if (raiz!= null) {
-                Nodoarbol nuevonodo = new Nodoarbol();
-                nuevonodo.setDato(raiz);
-                nuevonodo.setHijoderecho(new Nodoarbol());
-                nuevonodo.setHijoizquierdo(new Nodoarbol());
+                NodoArbol nuevonodo = new NodoArbol();
+                nuevonodo.dato = nodo;
+                nuevonodo.hijoderecho= new ArbolB();
+                nuevonodo.hijoizquierdo= new ArbolB();
                 raiz=nuevonodo;
            }else{
-                if(raiz > raiz.getDato()){
-                    raiz.getHijoderecho().Insertar(Nodoarbol);
+                if(nodo > raiz.dato){
+                    raiz.hijoderecho.Insertar(nodo);
                 }
-                if(Nodoarbol < raiz.getDato()){
-                    raiz.getHijoizquierdo().Insertar(Nodoarbol);
+                if(nodo < raiz.dato){
+                    raiz.hijoizquierdo.Insertar(nodo);
                 }
             }
         }       
@@ -41,13 +39,13 @@ public class ArbolB{
     public ArbolB Buscar(int nodo){
             ArbolB subarbol = null;
             if(raiz!= null){
-                if(nodo == raiz.getDato()){
+                if(nodo == raiz.dato){
                     return this;
                 }else{
-                    if(nodo < raiz.getDato()){
-                        subarbol=raiz.getHijoizquierdo().Buscar(nodo);
+                    if(nodo < raiz.dato){
+                        subarbol=raiz.hijoizquierdo.Buscar(nodo);
                     }else{
-                        subarbol=raiz.getHijoderecho().Buscar(nodo);
+                        subarbol=raiz.hijoderecho.Buscar(nodo);
                     }
                 }
             }
@@ -59,9 +57,9 @@ public class ArbolB{
     public int buscarMin() {
         ArbolB arbolActual = this;
         while( !arbolActual.raiz.hijoizquierdo.vacio() ) {
-            arbolActual = arbolActual.raiz.getHijoizquierdo();
+            arbolActual = arbolActual.raiz.hijoizquierdo;
         }
-        int devuelvo= arbolActual.raiz.getDato();
+        int devuelvo= arbolActual.raiz.dato;
         arbolActual.raiz=null;
         return devuelvo;
 
@@ -71,9 +69,9 @@ public class ArbolB{
     public int buscarMan() {
         ArbolB arbolActual = this;
         while( !arbolActual.raiz.hijoderecho.vacio() ) {
-            arbolActual = arbolActual.raiz.getHijoderecho();
+            arbolActual = arbolActual.raiz.hijoderecho;
         }
-        int devuelvo= arbolActual.raiz.getDato();
+        int devuelvo= arbolActual.raiz.dato;
             arbolActual.raiz=null;
         return devuelvo;
     }
@@ -83,44 +81,71 @@ public class ArbolB{
             if(raiz!= null){
                 return 0;
             }else{
-                int hijoizquierdo=raiz.getHijoizquierdo().AlturaArbol();
-                int hijoderecho=raiz.getHijoderecho().AlturaArbol();
+                int hijoizquierdo=raiz.hijoizquierdo.AlturaArbol();
+                int hijoderecho=raiz.hijoderecho.AlturaArbol();
                 return (1+Math.max(hijoizquierdo, hijoderecho));
             }
         }
               
         
-  
+    public boolean hoja(){
+            boolean hoja=false;
+            if(raiz.hijoizquierdo.vacio() && raiz.hijoderecho.vacio()){
+                hoja = true;
+            }
+            return hoja;
+        }
     
     
+    public void borrar(int a) {
+        ArbolB eliminar = Buscar(a);
+        if (!eliminar.vacio()) {
+            if (eliminar.hoja()) {
+                eliminar.raiz = null;
+            }
+            else {
+                if (!eliminar.raiz.hijoizquierdo.vacio() && !eliminar.raiz.hijoderecho.vacio()) {
+                    eliminar.raiz.dato = eliminar.raiz.hijoderecho.buscarMin();
+                }
+                else {
+                    if (eliminar.raiz.hijoizquierdo.vacio()) {
+                        eliminar.raiz = eliminar.raiz.hijoderecho.raiz;
+                    }else{
+                        eliminar.raiz = eliminar.raiz.hijoizquierdo.raiz;
+                    }
+                }
+            }
+        }
+    }
 
-
-   public void orden(Nodoarbol raiz){
+   public void orden(){
             if(raiz!= null){
-                orden(raiz.getHijoizquierdo());
-                System.out.print(raiz.getDato() + ",");
-                orden(raiz.getHijoderecho());
+                raiz.hijoizquierdo.orden();
+                System.out.print(raiz.dato + ",");
+                raiz.hijoderecho.orden();
             }
         }
    
    
-    public void preorden(Nodoarbol raiz){
+    public void preorden(){
             if(raiz!= null){
-                System.out.print(raiz.getDato() + ",");
-                preorden(raiz.getHijoizquierdo());
-                preorden(raiz.getHijoderecho());
+                System.out.print(raiz.dato + ",");
+                raiz.hijoizquierdo.preorden();
+                raiz.hijoderecho.preorden();
             }
         }
         
             
-     public void postorden(Nodoarbol raiz){
+     public void postorden(){
             if(raiz!= null){
-                postorden(raiz.getHijoizquierdo());
-                postorden(raiz.getHijoderecho());
-                System.out.print(raiz.getDato() + ",");
+                raiz.hijoizquierdo.postorden();
+                raiz.hijoderecho.postorden();
+                System.out.print(raiz.dato + ",");
             }
         }   
     
     
     
+    }
+
 }
