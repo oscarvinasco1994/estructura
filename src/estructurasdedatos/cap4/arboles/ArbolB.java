@@ -5,10 +5,7 @@
  */
 package estructurasdedatos.cap4.arboles;
 
-/**
- *
- * @author tusk
- */
+
 public class ArbolB{
 
     private NodoArbol raiz;
